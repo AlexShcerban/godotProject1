@@ -5,9 +5,11 @@ extends Node3D
 var isNowCar = true
 
 
-@export var sensitivity: float = 0.005 # Чувствительность мыши
-@export var min_max_pitch: float = 60.0 # Ограничения по вертикали (в градусах)
-@export var min_max_yaw: float = 90.0 # Ограничения по горизонтали (в градусах)
+var sensitivityNorm: float = 0.005 # # Чувствительность мыши обычная
+var sensitivityZoom: float = 0.0005 # # Чувствительность мыши при зуме
+var sensitivity: float = 0.005 # Чувствительность мыши
+var min_max_pitch: float = 60.0 # Ограничения по вертикали (в градусах)
+var min_max_yaw: float = 90.0 # Ограничения по горизонтали (в градусах)
 var rot_x: float = 0.0 # Текущие углы поворота в радианах
 var rot_y: float = 0.0
 
@@ -23,9 +25,26 @@ func _process(delta: float) -> void:
 		stateChange(isNowCar)
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if Input.is_action_just_pressed("ui_shoot"):
+		shoot()
+	
+	if Input.is_action_pressed("ui_zoom"):
+		cameraPlayer.fov = 20
+		sensitivity = sensitivityZoom
+	else:
+		cameraPlayer.fov = 75
+		sensitivity = sensitivityNorm
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func shoot():
+	var ray = $Camera3D/RayCast3D
+	if ray.get_collider():
+		var obj = ray.get_collider()
+		if obj.is_in_group("enemy"):
+			obj.queue_free()
+
+
+func _input(event: InputEvent) -> void:
 	# Считываем движение мыши
 	if event is InputEventMouseMotion and !isNowCar:
 		# Изменяем углы на основе смещения мыши и чувствительности
