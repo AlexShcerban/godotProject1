@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://78t3i80aqvh5"]
+
+[sub_resource type="Environment" id="Environment_42wbh"]
+ambient_light_source = 3
+ambient_light_color = Color(0.6996537, 0.6996534, 0.69965345, 1)
+tonemap_exposure = 2.15
+
+[node name="0Level" type="Node3D" unique_id=1184675456]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1071044794]
+transform = Transform3D(0.8280897, 0.40592033, 0.3866473, -0.16141163, -0.48785543, 0.8578714, 0.53685546, -0.7728039, -0.33846778, -38.60027, 11.897184, -11.711762)
+light_energy = 0.366
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1714130963]
+environment = SubResource("Environment_42wbh")

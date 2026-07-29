@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://m83sbcun545l"]
+
+[ext_resource type="Material" uid="uid://ceijwjv5ah06t" path="res://material/asphalt.tres" id="1_senbc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a6y1j"]
+size = Vector3(128.84277, 0.50097656, 128.78491)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_di8sv"]
+
+[node name="PlaceAsphalt" type="StaticBody3D" unique_id=1001490169]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679881726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24951172, 0)
+shape = SubResource("BoxShape3D_a6y1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=342194708]
+transform = Transform3D(64.611496, 0, 0, 0, 1, 0, 0, 0, 64.3543, 0, 0, 0)
+material_override = ExtResource("1_senbc")
+mesh = SubResource("PlaneMesh_di8sv")

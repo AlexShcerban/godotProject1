@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="vehicly"
-run/main_scene="uid://cwgo0fs4gmwux"
+run/main_scene="uid://clfbjtlcs54i"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://bvacr51bmruhi"
 
 [dotnet]
 
